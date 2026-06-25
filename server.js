@@ -150,10 +150,7 @@ const server = http.createServer(async (req, res) => {
                 } catch (sheetError) {
                     console.error(`⚠️ Sheet error: ${sheetError.message}`);
                 }
-                // Save CSV
-                const ts = new Date().toISOString();
-                const row = [ts, ho_ten, sdt].map(csvField).join(',') + '\n';
-                fs.appendFileSync(CHECKIN_FILE, row, 'utf8');
+                
 
                 // 🆕 Trả response visitor (không error)
                 res.writeHead(200, { 'Content-Type': 'application/json' });
