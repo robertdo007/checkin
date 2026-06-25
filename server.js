@@ -205,24 +205,9 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
-    /* GET /checkins — view saved check-ins */
-    if (method === 'GET' && pathname === '/CHECKIN_FILE') {
-        const csv = fs.readFileSync(CHECKIN_FILE, 'utf8');
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        const lines = csv.trim().split('\n').slice(1).filter(Boolean);
-        res.end(JSON.stringify({ ok: true, total: lines.length, data: lines }));
-        return;
-    }
+    
 
-    /* GET /download — download checkin CSV */
-    if (method === 'GET' && pathname === '/download') {
-        res.writeHead(200, {
-            'Content-Type': 'text/csv',
-            'Content-Disposition': 'attachment; filename="CHECKIN_FILE.csv"',
-        });
-        res.end(fs.readFileSync(CHECKIN_FILE));
-        return;
-    }
+    
 
     /* Serve index.html */
     const filePath = path.join(__dirname, 'index.html');
