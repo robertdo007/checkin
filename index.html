@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon_otsp.svg" type="image/svg+xml">
+    <title>Otis Sport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --navy: #0A0E1A;
+            --gold: #FFD700;
+            --coral: #FF4757;
+            --slate: #1E2640;
+            --slate2: #252D45;
+            --white: #fff;
+            --green: #4ade80;
+            --muted: rgba(255, 255, 255, .42);
+            --border: rgba(255, 255, 255, .09);
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--slate);
+            padding: 2.5rem 1.5rem 1.8rem;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 38px, rgba(255, 215, 0, .04) 38px, rgba(255, 215, 0, .04) 39px);
+            pointer-events: none
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--coral);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 1rem
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background: #fff;
+            border-radius: 50%;
+            animation: pulse 1.4s infinite
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .4;
+                transform: scale(.7)
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            color: var(--gold);
+            line-height: 1;
+            letter-spacing: -1px;
+            margin-bottom: .4rem;
+            position: relative
+        }
+
+        .hero-sub {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-transform: uppercase
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 1.2rem 5rem
+        }
+
+        .section {
+            padding-top: 1.6rem
+        }
+
+        .step-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .6rem
+        }
+
+        .step-num {
+            width: 22px;
+            height: 22px;
+            background: var(--gold);
+            color: var(--navy);
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .card {
+            background: var(--slate);
+            border-radius: 16px;
+            padding: 1.4rem;
+            border: 1px solid var(--border)
+        }
+
+        .card h2 {
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 1.25rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            letter-spacing: .3px
+        }
+
+        /* FORM */
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 10px
+        }
+
+        .form-field label {
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .38);
+            text-transform: uppercase;
+            letter-spacing: 1.5px
+        }
+
+        .form-field input {
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .11);
+            border-radius: 9px;
+            color: var(--white);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 15px;
+            padding: 12px 14px;
+            width: 100%;
+            outline: none;
+            transition: border-color .2s, background .2s
+        }
+
+        .form-field input:focus {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, .04)
+        }
+
+        .form-field input::placeholder {
+            color: rgba(255, 255, 255, .2)
+        }
+
+        .btn {
+            width: 100%;
+            border: none;
+            border-radius: 11px;
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1.5px;
+            padding: 14px;
+            cursor: pointer;
+            transition: opacity .18s, transform .1s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px
+        }
+
+        .btn:hover {
+            opacity: .88
+        }
+
+        .btn:active {
+            transform: scale(.98)
+        }
+
+        .btn:disabled {
+            opacity: .45;
+            cursor: not-allowed
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+            margin-top: 12px
+        }
+
+        .btn-coral {
+            background: var(--coral);
+            color: #fff
+        }
+
+        .error-box {
+            background: rgba(255, 71, 87, .12);
+            border: 1px solid rgba(255, 71, 87, .3);
+            color: #ff7b87;
+            font-size: 13px;
+            border-radius: 9px;
+            padding: 10px 14px;
+            margin-top: 10px;
+            display: none;
+            line-height: 1.5
+        }
+
+        /* RESULT CARD */
+        .result-hero {
+            background: rgba(255, 215, 0, .06);
+            border: 1px solid rgba(255, 215, 0, .2);
+            border-radius: 12px;
+            padding: 1.1rem 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0
+        }
+
+        .result-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 2px
+        }
+
+        .result-sdt {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        .noi-dung-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1rem
+        }
+
+        .noi-dung-card {
+            background: var(--slate2);
+            border-radius: 11px;
+            padding: 1rem 1.1rem;
+            border: 1px solid var(--border)
+        }
+
+        .nd-title {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .5rem
+        }
+
+        .nd-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px
+        }
+
+        .nd-label {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .nd-value {
+            font-weight: 600;
+            font-size: 15px
+        }
+
+        .nd-bang {
+            background: var(--coral);
+            color: #fff;
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 1.1rem;
+            padding: 3px 14px;
+            border-radius: 7px;
+            letter-spacing: 1px
+        }
+
+        .nd-time {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1rem
+        }
+
+        /* SOCIAL */
+        .social-intro {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 1rem
+        }
+
+        .social-intro strong {
+            color: var(--gold)
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 11px;
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all .2s;
+            color: rgba(255, 255, 255, .65);
+            font-size: 13px;
+            font-weight: 500;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            position: relative;
+            width: 100%;
+            text-align: left
+        }
+
+        .social-btn:hover {
+            border-color: rgba(255, 255, 255, .28);
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .social-btn.done {
+            border-color: rgba(74, 222, 128, .5);
+            background: rgba(74, 222, 128, .07);
+            color: var(--green)
+        }
+
+        .s-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0
+        }
+
+        .s-icon.ig {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)
+        }
+
+        .s-icon.tt {
+            background: #010101;
+            border: 1px solid #333
+        }
+
+        .s-icon.fb {
+            background: #1877F2
+        }
+
+        .s-icon.yt {
+            background: #FF0000
+        }
+
+        .check-badge {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 19px;
+            height: 19px;
+            background: var(--green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--navy);
+            font-weight: 700
+        }
+
+        .progress-wrap {
+            margin-top: 1rem
+        }
+
+        .progress-track {
+            background: rgba(255, 255, 255, .08);
+            border-radius: 99px;
+            height: 6px;
+            overflow: hidden
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 99px;
+            background: var(--gold);
+            transition: width .4s cubic-bezier(.4, 0, .2, 1)
+        }
+
+        .progress-text {
+            font-size: 11px;
+            color: rgba(255, 255, 255, .35);
+            text-align: right;
+            margin-top: 5px
+        }
+
+        .unlock-hint {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .28);
+            text-align: center;
+            margin-top: 10px;
+            line-height: 1.6;
+            transition: color .3s
+        }
+
+        .unlock-hint.unlocked {
+            color: rgba(74, 222, 128, .7)
+        }
+
+        /* GIF SPIN */
+        .gift-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-align: center
+        }
+
+        .gif-slot {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 13px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 1rem
+        }
+
+        .gif-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, .18)
+        }
+
+        .gif-placeholder .lock-icon {
+            font-size: 3rem
+        }
+
+        .gif-placeholder p {
+            font-size: 13px
+        }
+
+        .gif-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none
+        }
+
+        .spin-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s
+        }
+
+        .spin-overlay.active {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .spinner {
+            width: 42px;
+            height: 42px;
+            border: 3px solid rgba(255, 215, 0, .18);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin .75s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .btn-again {
+            width: 100%;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, .35);
+            border-radius: 11px;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background .18s;
+            display: none
+        }
+
+        .btn-again:hover {
+            background: rgba(255, 215, 0, .06)
+        }
+
+        .share-row {
+            display: none;
+            gap: 8px;
+            margin-top: 10px
+        }
+
+        .share-btn {
+            flex: 1;
+            padding: 10px 6px;
+            border-radius: 9px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: rgba(255, 255, 255, .5);
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            transition: all .18s
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 255, 255, .06);
+            color: #fff
+        }
+
+        .success-banner {
+            background: rgba(74, 222, 128, .1);
+            border: 1px solid rgba(74, 222, 128, .28);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 13px;
+            color: var(--green);
+            text-align: center;
+            margin-bottom: 1rem;
+            display: none
+        }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: var(--slate2);
+            border: 1px solid var(--border);
+            color: #fff;
+            font-size: 13px;
+            padding: 11px 20px;
+            border-radius: 99px;
+            pointer-events: none;
+            transition: transform .3s, opacity .3s;
+            opacity: 0;
+            z-index: 10000;
+            white-space: nowrap
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1
+        }
+
+        /* CONFETTI */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(.82);
+                opacity: 0
+            }
+
+            60% {
+                transform: scale(1.05)
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        .pop {
+            animation: popIn .45s cubic-bezier(.34, 1.56, .64, 1) both
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .fade-in {
+            animation: fadeUp .35s ease both
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        /* DIVIDER */
+        .divider {
+            text-align: center;
+            padding: .4rem 0;
+            color: rgba(255, 255, 255, .15);
+            font-size: 18px
+        }
+
+        /* CHECKIN AGAIN */
+        .btn-restart {
+            width: 100%;
+            background: transparent;
+            color: rgba(255, 255, 255, .4);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 11px;
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 11px;
+            cursor: pointer;
+            margin-top: .6rem;
+            transition: all .18s
+        }
+
+        .btn-restart:hover {
+            background: rgba(255, 255, 255, .05);
+            color: #fff
+        }
+
+        @media(max-width:420px) {
+            .social-grid {
+                grid-template-columns: 1fr
+            }
+
+            .share-row {
+                flex-direction: column
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="confetti-canvas"></canvas>
+    <div id="toast" class="toast"></div>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="badge"><span class="live-dot"></span>Check-in · 2026</div>
+        <h1>✨ Otis Sport ✨</h1>
+        <div class="hero-sub">Hệ thống check-in vận động viên</div>
+    </header>
+
+    <div class="container">
+
+        <!-- STEP 1: NHẬP THÔNG TIN -->
+        <div id="step1" class="section fade-in">
+            <div class="step-label"><span class="step-num">1</span>Check-in</div>
+            <div class="card">
+                <h2>Thông tin vận động viên</h2>
+                <div class="form-field">
+                    <label for="ho-ten">Họ và tên</label>
+                    <input type="text" id="ho-ten" placeholder="Nguyễn Văn A" autocomplete="name" />
+                </div>
+                <div class="form-field">
+                    <label for="sdt">Số điện thoại</label>
+                    <input type="tel" id="sdt" placeholder="0912345678" autocomplete="tel" />
+                </div>
+                <div class="error-box" id="form-error"></div>
+                <button class="btn btn-gold" id="checkin-btn" onclick="doCheckin()">
+                    🎟 XÁC NHẬN CHECK-IN
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: KẾT QUẢ -->
+        <div id="step2" class="section hidden">
+            <div class="step-label"><span class="step-num">2</span>Thông tin thi đấu</div>
+            <div class="card" id="result-card">
+                <!-- filled by JS -->
+            </div>
+        </div>
+
+        <!-- STEP 3: FOLLOW MXH -->
+        <div id="step3" class="section hidden">
+            <div class="step-label"><span class="step-num">3</span>Nhận quà — Follow mạng xã hội</div>
+            <div class="card">
+                <h2>Follow để nhận quà khủng!</h2>
+                <p class="social-intro">Follow <strong>2 tài khoản</strong> bên dưới để mở khóa vòng quay
+                    may mắn 🎁</p>
+                <div class="social-grid">
+                    <button class="social-btn" id="btn-fb" onclick="followSocial('fb',this)">
+                        <span class="s-icon fb">👍</span><span>Facebook</span>
+                    </button>
+                    <button class="social-btn" id="btn-zl" onclick="followSocial('zl',this)">
+                        <span class="s-icon zl">💬</span>
+                        <span>Zalo</span>
+                    </button>
+                </div>
+                <div class="progress-wrap">
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">0 / 2 tài khoản đã follow</div>
+                </div>
+                <div class="unlock-hint" id="unlock-hint">Follow thêm để mở khóa vòng quay may mắn 🎁</div>
+            </div>
+        </div>
+
+        <!-- STEP 4: GIF SPIN -->
+        <div id="step4" class="section hidden">
+            <div class="step-label"><span class="step-num">4</span>Vòng quay may mắn</div>
+            <div class="card">
+                <div class="success-banner" id="success-banner">🎉 Đã mở khóa! Nhấn nút bên dưới để quay!</div>
+                <div class="gift-tag">🎁 Quà Ngẫu Nhiên Của Bạn</div>
+                <div class="gif-slot">
+                    <div class="gif-placeholder" id="gif-placeholder">
+                        <div class="lock-icon">🔒</div>
+                        <p>Follow 2 tài khoản để mở khóa</p>
+                    </div>
+                    <img id="gif-img" alt="Quà tặng" />
+                    <div class="spin-overlay" id="spin-overlay">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+                <button class="btn btn-coral" id="btn-reveal" onclick="revealImage()" style="display:none">🎉 QUAY
+                    NGAY!</button>
+                <button class="btn-again" id="btn-again" onclick="rollAgain()">↺ &nbsp;Quay lại</button>
+                <div class="share-row" id="share-row">
+                    <button class="share-btn" onclick="shareAction('copy')">📋 Copy link</button>
+                    <button class="share-btn" onclick="shareAction('story')">📷 Chia sẻ</button>
+                    <button class="share-btn" onclick="shareAction('download')">⬇ Tải về</button>
+                </div>
+                <button class="btn-restart" onclick="restart()">↩ Check-in người khác</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const SERVER = 'http://localhost:3000';
+        const REQUIRED = 2;
+
+        const SOCIAL_LINKS = {
+            fb: 'https://www.facebook.com/otissports',
+            zl: 'https://zalo.me/g/qeuvliflxcowcuuescal',
+        };
+
+        // 🎯 Thay bằng GIF của bạn — dùng link Giphy hoặc host riêng
+        const IMAGES = [
+            'https://th.bing.com/th/id/OIP.F80HQpL5OkZuNyBkrEontwHaEz?w=275&h=180&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3',
+            'https://th.bing.com/th/id/OIP.EZRWjgDuZn23eIuMK_3BygHaHa?w=170&h=180&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3',
+            'https://th.bing.com/th/id/OIP.aoO-GF44EEIznjQh-CB-9gHaHa?w=170&h=180&c=7&r=0&o=7&dpr=2&pid=1.7&rm=3',
+
+        ];
+
+        const followed = new Set();
+        let currentImageUrl = '';
+
+        /* ── STEP 1: CHECK-IN ───────────────────────────── */
+        async function doCheckin() {
+            const hoTen = document.getElementById('ho-ten').value.trim();
+            const sdt = document.getElementById('sdt').value.trim();
+            const err = document.getElementById('form-error');
+            const btn = document.getElementById('checkin-btn');
+
+            if (!hoTen || !sdt) {
+                showError('Vui lòng nhập đầy đủ họ tên và số điện thoại.');
+                return;
+            }
+            err.style.display = 'none';
+            btn.disabled = true;
+            btn.textContent = '⏳ Đang tra cứu...';
+
+            try {
+                const res = await fetch(SERVER + '/checkin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ho_ten: hoTen, sdt }),
+                });
+                const json = await res.json();
+
+                if (!json.ok) {
+                    showError(json.error || 'Có lỗi xảy ra.');
+                    btn.disabled = false;
+                    btn.textContent = '🎟 XÁC NHẬN CHECK-IN';
+                    return;
+                }
+
+                // 🆕 Không check json.data nữa
+                let resultData;
+
+                if (json.isVisitor) {
+                    // 👤 Khách tham quan
+                    console.log('👤 Visitor:', json.ho_ten);
+                    resultData = {
+                        ho_ten: json.ho_ten,
+                        sdt: json.sdt,
+                        noi_dung: []
+                    };
+                } else {
+                    // ✅ Vận động viên
+                    console.log('🎯 Athlete:', json.ho_ten);
+                    console.log('📊 json.noi_dung:', JSON.stringify(json.noi_dung));  // 🆕
+                    resultData = {
+                        ho_ten: json.ho_ten,
+                        sdt: json.sdt,
+                        noi_dung: json.noi_dung
+                    };
+                    console.log('📋 resultData:', JSON.stringify(resultData, null, 2));  // 🆕
+                }
+
+                renderResult(resultData);
+                console.log('🎯 resultData:', JSON.stringify(resultData, null, 2));  // 🆕
+                show('step2');
+                show('step3');
+                show('step4');
+                document.getElementById('step1').classList.add('hidden');
+                document.getElementById('step2').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            } catch (e) {
+                showError('⚠️ Không kết nối được server. Server đang chạy chưa?\n(' + e.message + ')');
+                btn.disabled = false;
+                btn.textContent = '🎟 XÁC NHẬN CHECK-IN';
+            }
+        }
+
+        function showError(msg) {
+            const err = document.getElementById('form-error');
+            err.textContent = msg;
+            err.style.display = 'block';
+        }
+
+        /* ── RENDER KẾT QUẢ ────────────────────────────── */
+        function renderResult(data) {
+
+            // 🔧 Guard clause - nếu không có ho_ten
+            if (!data || !data.ho_ten) {
+                console.error('❌ renderResult: missing data.ho_ten', data);
+                return;
+            }
+            const initials = data.ho_ten.split(' ').map(w => w[0]).slice(-2).join('').toUpperCase();
+
+            let ndHTML = '';
+            if (data.noi_dung.length === 0) {
+                ndHTML = `<div style="color:var(--muted);font-size:13px;text-align:center;padding:.5rem 0">Không có nội dung thi đấu nào được tìm thấy.</div>`;
+            } else {
+                ndHTML = data.noi_dung.map(nd => `
+        <div class="noi-dung-card">
+          <div class="nd-title">🏅 ${nd.ten}</div>
+          <div class="nd-row" style="margin-bottom:6px">
+            <span class="nd-label">Bảng đấu</span>
+            <span class="nd-bang">${nd.bang}</span>
+          </div>
+          <div class="nd-row">
+            <span class="nd-label">Trận đầu tiên</span>
+            <span class="nd-time">⏰ ${nd.tran}</span>
+          </div>
+        </div>
+      `).join('');
+            }
+
+            const hoTen = data.ho_ten
+                ?.toLowerCase()
+                .replace(/\b\w/g, c => c.toUpperCase());
+
+            const sdt = String(data.sdt).startsWith('0')
+                ? String(data.sdt)
+                : '0' + String(data.sdt);
+
+            document.getElementById('result-card').innerHTML = `
+  <div class="result-hero">
+    <div class="avatar">${initials}</div>
+    <div>
+      <div class="result-name">${hoTen}</div>
+      <div class="result-sdt">📞 ${sdt}</div>
+    </div>
+  </div>
+  <div class="noi-dung-list">${ndHTML}</div>
+  <div style="font-size:12px;color:rgba(255,255,255,.25);text-align:center">
+    Check-in thành công ✓ — tiếp tục bên dưới để nhận quà
+  </div>
+`;
+        }
+
+        /* ── STEP 3: FOLLOW ─────────────────────────────── */
+        function followSocial(platform, btn) {
+            if (followed.has(platform)) return;
+            window.open(SOCIAL_LINKS[platform], '_blank', 'noopener');
+            followed.add(platform);
+            btn.classList.add('done');
+            const badge = document.createElement('span');
+            badge.className = 'check-badge';
+            badge.textContent = '✓';
+            btn.appendChild(badge);
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const count = followed.size;
+            const pct = Math.min(100, Math.round((count / REQUIRED) * 100));
+            document.getElementById('progress-fill').style.width = pct + '%';
+            document.getElementById('progress-text').textContent = count + ' / ' + REQUIRED + ' tài khoản đã follow';
+            if (count >= REQUIRED) {
+                document.getElementById('gif-placeholder').style.display = 'none';
+                document.getElementById('btn-reveal').style.display = 'flex';
+                document.getElementById('success-banner').style.display = 'block';
+                const hint = document.getElementById('unlock-hint');
+                hint.textContent = '✅ Đã mở khóa! Kéo xuống để quay ↓';
+                hint.classList.add('unlocked');
+                document.getElementById('step4').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        /* ── STEP 4: GIF SPIN ───────────────────────────── */
+        function revealImage() {
+            const overlay = document.getElementById('spin-overlay');
+            overlay.classList.add('active');
+            document.getElementById('btn-reveal').style.display = 'none';
+            document.getElementById('btn-again').style.display = 'none';
+
+            const imageUrl = IMAGES[Math.floor(Math.random() * IMAGES.length)];
+            currentImageUrl = imageUrl;
+            const img = document.getElementById('gif-img');
+            img.style.display = 'none';
+            img.classList.remove('pop');
+
+            const preload = new Image();
+            preload.onload = () => {
+                setTimeout(() => {
+                    overlay.classList.remove('active');
+                    img.src = imageUrl;
+                    img.style.display = 'block';
+                    void img.offsetWidth;
+                    img.classList.add('pop');
+                    document.getElementById('btn-again').style.display = 'block';
+                    document.getElementById('share-row').style.display = 'flex';
+                    launchConfetti();
+                    showToast('🎉 Chúc mừng! Bạn đã nhận được quà!');
+                }, 700);
+            };
+            preload.onerror = () => {
+                overlay.classList.remove('active');
+                document.getElementById('gif-placeholder').innerHTML = '<div class="lock-icon">😢</div><p style="font-size:12px">Không tải được ảnh — thử lại!</p>';
+                document.getElementById('gif-placeholder').style.display = 'flex';
+                document.getElementById('btn-again').style.display = 'block';
+            };
+            preload.src = imageUrl;
+        }
+
+        function rollAgain() {
+            const img = document.getElementById('gif-img');
+            img.style.display = 'none';
+            img.classList.remove('pop');
+            document.getElementById('share-row').style.display = 'none';
+            document.getElementById('btn-again').style.display = 'none';
+            revealImage();
+        }
+
+        function shareAction(type) {
+            if (type === 'copy') {
+                navigator.clipboard?.writeText('Mình vừa check-in tại Otis Sport 2026! 🏸🎉').then(() => showToast('📋 Đã copy!'));
+            } else if (type === 'download') {
+                if (currentImageUrl) { const a = document.createElement('a'); a.href = currentImageUrl; a.download = 'sportfest-gif.gif'; a.target = '_blank'; a.click(); }
+            } else {
+                if (navigator.share) { navigator.share({ title: 'Otis Sport 2026', url: window.location.href }).catch(() => { }); }
+                else { navigator.clipboard?.writeText(window.location.href); showToast('🔗 Đã copy link!'); }
+            }
+        }
+
+        /* ── RESTART ─────────────────────────────────────── */
+        function restart() {
+            ['step2', 'step3', 'step4'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            show('step1');
+            document.getElementById('ho-ten').value = '';
+            document.getElementById('sdt').value = '';
+            document.getElementById('form-error').style.display = 'none';
+            document.getElementById('checkin-btn').disabled = false;
+            document.getElementById('checkin-btn').textContent = '🎟 XÁC NHẬN CHECK-IN';
+            followed.clear();
+            ['fb', 'zl'].forEach(p => {
+                const b = document.getElementById('btn-' + p);
+                b.classList.remove('done');
+                b.querySelector('.check-badge')?.remove();
+            });
+            document.getElementById('progress-fill').style.width = '0%';
+            document.getElementById('progress-text').textContent = '0 / 2 tài khoản đã follow';
+            document.getElementById('unlock-hint').textContent = 'Follow thêm để mở khóa vòng quay 🎁';
+            document.getElementById('unlock-hint').classList.remove('unlocked');
+            document.getElementById('success-banner').style.display = 'none';
+            document.getElementById('btn-reveal').style.display = 'none';
+            document.getElementById('btn-again').style.display = 'none';
+            document.getElementById('share-row').style.display = 'none';
+            document.getElementById('gif-img').style.display = 'none';
+            document.getElementById('gif-img').classList.remove('pop');
+            document.getElementById('gif-placeholder').style.display = 'flex';
+            document.getElementById('gif-placeholder').innerHTML = '<div class="lock-icon">🔒</div><p>Follow 2 tài khoản để mở khóa</p>';
+            document.getElementById('step1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        /* ── HELPERS ─────────────────────────────────────── */
+        function show(id) {
+            const el = document.getElementById(id);
+            el.classList.remove('hidden');
+            el.classList.add('fade-in');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 2600);
+        }
+
+        /* ── CONFETTI ─────────────────────────────────────── */
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const colors = ['#FFD700', '#FF4757', '#4ade80', '#60a5fa', '#f472b6', '#fff', '#fb923c'];
+            const pieces = Array.from({ length: 130 }, () => ({
+                x: Math.random() * canvas.width, y: -10 - Math.random() * 100,
+                r: 4 + Math.random() * 5, d: 3 + Math.random() * 7,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                tilt: Math.random() * 20 - 10, speed: 1.8 + Math.random() * 2.5,
+                opacity: .85 + Math.random() * .15,
+            }));
+            let frame = 0;
+            (function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                pieces.forEach(p => {
+                    ctx.save(); ctx.globalAlpha = p.opacity;
+                    ctx.beginPath();
+                    ctx.ellipse(p.x, p.y, p.r, p.r * .45, (p.tilt * Math.PI) / 180, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color; ctx.fill(); ctx.restore();
+                    p.y += p.speed; p.x += Math.sin(frame * .04 + p.d) * 1.3;
+                    p.tilt += .6; p.opacity = Math.max(0, p.opacity - .003);
+                });
+                frame++;
+                if (frame < 200) requestAnimationFrame(draw);
+                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+            })();
+        }
+    </script>
+</body>
+
+</html>
