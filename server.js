@@ -5,12 +5,9 @@ const url = require('url');
 
 const PORT = 3000;
 const DATA_FILE = path.join(__dirname, 'data_check_in.csv');
-const CHECKIN_FILE = path.join(__dirname, 'CHECKIN_FILE.csv');
 
-/* ── Ensure checkin CSV exists ───────────────────── */
-if (!fs.existsSync(CHECKIN_FILE)) {
-    fs.writeFileSync(CHECKIN_FILE, 'timestamp,ho_ten,sdt\n', 'utf8');
-}
+
+
 
 /* ── Parse CSV ───────────────────────────────────── */
 function parseCSV(text) {
@@ -207,25 +204,7 @@ const server = http.createServer(async (req, res) => {
                 console.error(`⚠️ Sheet sync error: ${sheetError.message}`);
             }
 
-            // Save to CSV
-            const ts = new Date().toISOString();
-            const row = [ts, result.ho_ten, result.sdt].map(csvField).join(',') + '\n';
-            fs.appendFileSync(CHECKIN_FILE, row, 'utf8');
-            console.log(`[${ts}] Check-in: ${result.ho_ten} - ${result.sdt}`);
-
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({
-                ok: true,
-                isVisitor: false,
-                ho_ten: result.ho_ten,
-                sdt: result.sdt,
-                noi_dung: result.noi_dung
-            }));
-            console.log(`📤 Sent noi_dung:`, result.noi_dung);  // 🆕
-        } catch (e) {
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ ok: false, error: e.message }));
-        }
+            
         return;
     }
 
