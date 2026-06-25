@@ -222,6 +222,5 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
     console.log(`\n🏸  Sport Check-in Server`);
     console.log(`   Website:  http://localhost:${PORT}`);
-    console.log(`   Checkinfile: http://localhost:${PORT}/CHECKIN_FILE`);
-    console.log(`   Download: http://localhost:${PORT}/download\n`);
+   
 });
