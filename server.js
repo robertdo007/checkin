@@ -202,12 +202,26 @@ const server = http.createServer(async (req, res) => {
             }
 
             
+
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({
+                ok: true,
+                isVisitor: false,
+                ho_ten: result.ho_ten,
+                sdt: result.sdt,
+                noi_dung: result.noi_dung
+            }));
+            console.log(`📤 Sent noi_dung:`, result.noi_dung);  // 🆕
+        } catch (e) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ ok: false, error: e.message }));
+        }
         return;
     }
 
-    
 
-    
+
+
 
     /* Serve index.html */
     const filePath = path.join(__dirname, 'index.html');
@@ -222,5 +236,5 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
     console.log(`\n🏸  Sport Check-in Server`);
     console.log(`   Website:  http://localhost:${PORT}`);
-   
+
 });
